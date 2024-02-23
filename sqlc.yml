@@ -1,0 +1,15 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "query.sql"
+    schema: "migrations"
+    gen:
+      go:
+        package: "db"
+        out: "db"
+        sql_package: "pgx/v5"
+        emit_interface: true
+        overrides:
+          - db_type: "json"
+            go_type:
+              type: "map[string]interface{}"
